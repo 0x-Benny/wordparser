@@ -4,7 +4,7 @@ package it.unipd.dei.eis.dprs;
  * Hello world!
  *
  */
-public class App 
+public class Wordparser
 {
     public static void main( String[] args )
     {
