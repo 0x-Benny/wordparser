@@ -8,6 +8,6 @@ public class Wordparser
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello, F.!" );
+        System.out.println( "Hello Christian" );
     }
 }
