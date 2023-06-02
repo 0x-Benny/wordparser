@@ -58,7 +58,13 @@
       <artifactId>jsoup</artifactId>
       <version>1.16.1</version>
     </dependency>
-    <!-- Core NLP -->
+    <!-- PepperKit CoreNLP Stopwords Annotator -->
+    <dependency>
+      <groupId>io.github.pepperkit</groupId>
+      <artifactId>corenlp-stop-words-annotator</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <!-- CoreNLP -->
     <dependency>
       <groupId>edu.stanford.nlp</groupId>
       <artifactId>stanford-corenlp</artifactId>
