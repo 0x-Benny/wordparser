@@ -1,6 +1,6 @@
 package it.unipd.dei.eis.dprs;
 
-public class WordparserTest
+public class WordparserMain
 {
     public static void main( String[] args )
     {
