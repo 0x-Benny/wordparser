@@ -3,9 +3,8 @@ package it.unipd.dei.eis.dprs;
 import org.apache.commons.cli.*;
 import java.io.*;
 import java.nio.file.*;
-import java.util.*;
 
-public class WordparserMain
+public class Main
 {
     public static void main(String[] args)
     {

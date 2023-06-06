@@ -1,12 +1,12 @@
-package it.unipd.dei.eis.dprs;
+package it.unipd.dei.eis.dprs.adapters;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import it.unipd.dei.eis.dprs.BasicArticle;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import org.jsoup.Jsoup;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -33,11 +33,11 @@ public class TheGuardianAdapter
         return null;
     }
 
-    public ArrayList<BasicArticle>  fetchArticles()
+    public BasicArticle[]  fetchArticles()
     {
         return fetchArticles(null);
     }
-    public ArrayList<BasicArticle> fetchArticles(String query)
+    public BasicArticle[] fetchArticles(String query)
     {
         // Costruzione della richiesta con libreria Okhttp
         OkHttpClient client = new OkHttpClient();
@@ -66,17 +66,18 @@ public class TheGuardianAdapter
                     String title = resultNode.get("webTitle").asText();
                     String body = bodyFormatter(resultNode.get("fields").get("body").asText());
                     articles.add(new BasicArticle(title, body, "TheGuardian"));
-                    System.out.println("**ARTICOLO CREATO**\nTITOLO: " + title + "\nTESTO: " + body + '\n');
+                    //System.out.println("**ARTICOLO CREATO**\nTITOLO: " + title + "\nTESTO: " + body + '\n');
                 }
             }
+            else
+                System.out.println("++ERRORE. Campo \"results\" di TheGuardian nullo o non valido.");
         }
         catch (IOException e)
         {
-            System.out.println("Errore.");
+            System.err.println("++ERRORE. Nessuna risposta dalle API TheGuardian. Dettagli:");
             e.printStackTrace();
         }
-
         // Risultato finale
-        return articles; //.toArray(new BasicArticle[0]);
+        return articles.toArray(new BasicArticle[0]);
     }
 }

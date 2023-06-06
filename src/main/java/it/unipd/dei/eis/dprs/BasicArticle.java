@@ -31,10 +31,10 @@ public class BasicArticle
     @Override
     public String toString()
     {
-        return "++[Informazioni Articolo]++ {\n" +
-                ", *FONTE='" + getSource() + "'\n" +
-                ", *TITOLO='" + getTitle() + "'\n" +
-                ", *TESTO='" + getBody() + "'\n" +
+        return "++[INFO ARTICOLO]++ {\n" +
+                "*FONTE='" + getSource() + "'\n" +
+                "*TITOLO='" + getTitle() + "'\n" +
+                "*TESTO='" + getBody() + "'\n" +
                 '}';
     }
 }
