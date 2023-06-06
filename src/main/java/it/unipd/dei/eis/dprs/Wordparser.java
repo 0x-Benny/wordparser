@@ -1,9 +1,15 @@
 package it.unipd.dei.eis.dprs;
 
-import java.util.*;
-import edu.stanford.nlp.ling.*;
-import edu.stanford.nlp.pipeline.*;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import io.github.pepperkit.corenlp.stopwords.StopWordsAnnotator;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.TreeMap;
 
 public class Wordparser
 {
@@ -17,7 +23,7 @@ public class Wordparser
         text = text.replaceAll("[^A-Za-z\\-\\s]+|(?<!\\b\\w{1,1})-(?!\\w{1,1}\\b)","");
         final Properties props = new Properties();
         props.put("annotators", "tokenize, ssplit, pos, lemma, stopwords");
-        props.setProperty("customAnnotatorClass.stopwords", "StopWordsAnnotator");
+        props.setProperty("customAnnotatorClass.stopwords", "io.github.pepperkit.corenlp.stopwords.StopWordsAnnotator");
         props.setProperty("ssplit.isOneSentence", "true");
         props.setProperty("tokenize.options", "tokenizeNLs=false,splitAssimilations=false,splitHyphenated=false");
         // Filter out these words

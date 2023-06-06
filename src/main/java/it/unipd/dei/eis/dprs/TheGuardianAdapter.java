@@ -11,36 +11,41 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TheGuardianAdapter {
-
+public class TheGuardianAdapter
+{
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
     private final String apiKey;
-    public ArrayList<BasicArticle> articles = new ArrayList<BasicArticle>();
+    public ArrayList<BasicArticle> articles = new ArrayList<>();
 
-    public TheGuardianAdapter(final String apiKey) {
+    public TheGuardianAdapter(final String apiKey)
+    {
         this.apiKey = apiKey;
     }
 
     // Metodo ausiliario per formattare e pulire correttamente il testo HTML
-    private String bodyFormatter(String text) {
-        if(text != null) {
+    private String bodyFormatter(String text)
+    {
+        if(text != null)
+        {
             return Jsoup.parse(text).wholeText().trim().replaceAll("[\n]{2,}", " ")
                 .replaceAll("[ ]{2,}", " ").replaceAll("[ \n]{2,}", " ");
         }
         return null;
     }
 
-    public BasicArticle[] fetchArticles() {
+    public ArrayList<BasicArticle>  fetchArticles()
+    {
         return fetchArticles(null);
     }
-    public BasicArticle[] fetchArticles(String query) {
-
+    public ArrayList<BasicArticle> fetchArticles(String query)
+    {
         // Costruzione della richiesta con libreria Okhttp
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder queryUrlBuilder = Objects.requireNonNull(HttpUrl.get(TG_API_URL)).newBuilder();
         queryUrlBuilder.addQueryParameter("api-key", apiKey);
         queryUrlBuilder.addQueryParameter("show-fields", "body");
-        if (query != null && !query.isEmpty()) {
+        if (query != null && !query.isEmpty())
+        {
             queryUrlBuilder.addQueryParameter("q", query);
         }
         String url = queryUrlBuilder.build().toString();
@@ -50,24 +55,28 @@ public class TheGuardianAdapter {
 
         // Costruzione della risposta con libreria Jackson
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
+        try
+        {
             JsonNode requestRoot = objectMapper.readTree(Objects.requireNonNull(client.newCall(request).execute().body()).string());
-
             JsonNode results = requestRoot.get("response").get("results");
-            if (results != null && results.isArray()) {
-                for (JsonNode resultNode : results) {
+            if (results != null && results.isArray())
+            {
+                for (JsonNode resultNode : results)
+                {
                     String title = resultNode.get("webTitle").asText();
                     String body = bodyFormatter(resultNode.get("fields").get("body").asText());
                     articles.add(new BasicArticle(title, body, "TheGuardian"));
                     System.out.println("**ARTICOLO CREATO**\nTITOLO: " + title + "\nTESTO: " + body + '\n');
                 }
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Errore.");
             e.printStackTrace();
         }
 
         // Risultato finale
-        return articles.toArray(new BasicArticle[0]);
+        return articles; //.toArray(new BasicArticle[0]);
     }
 }

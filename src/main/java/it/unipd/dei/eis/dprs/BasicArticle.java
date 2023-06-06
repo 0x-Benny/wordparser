@@ -1,35 +1,40 @@
 package it.unipd.dei.eis.dprs;
 
-public class BasicArticle {
-    private String source;
+public class BasicArticle
+{
     private String title;
     private String body;
+    private String source;
 
-    public BasicArticle() {
-    }
+    public BasicArticle() {}
 
-    public BasicArticle(final String title, final String body, final String source) {
+    public BasicArticle(final String title, final String body, final String source)
+    {
         this.source = source;
         this.title = title;
         this.body = body;
     }
 
-    public String getSource() {
+    public String getSource()
+    {
         return source;
     }
-    public String getTitle() {
+    public String getTitle()
+    {
         return title;
     }
-    public String getBody() {
+    public String getBody()
+    {
         return body;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "++[Informazioni Articolo]++ {\n" +
-                ", *SORGENTE='" + source + "'\n" +
-                ", *TITOLO='" + title + "'\n" +
-                ", *TESTO='" + body + "'\n" +
+                ", *FONTE='" + getSource() + "'\n" +
+                ", *TITOLO='" + getTitle() + "'\n" +
+                ", *TESTO='" + getBody() + "'\n" +
                 '}';
     }
 }

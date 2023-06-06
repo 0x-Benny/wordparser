@@ -23,16 +23,14 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.1</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>2.15.1</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
@@ -58,13 +56,11 @@
       <artifactId>jsoup</artifactId>
       <version>1.16.1</version>
     </dependency>
-    <!-- PepperKit CoreNLP Stopwords Annotator -->
     <dependency>
       <groupId>io.github.pepperkit</groupId>
       <artifactId>corenlp-stop-words-annotator</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!-- CoreNLP -->
     <dependency>
       <groupId>edu.stanford.nlp</groupId>
       <artifactId>stanford-corenlp</artifactId>
