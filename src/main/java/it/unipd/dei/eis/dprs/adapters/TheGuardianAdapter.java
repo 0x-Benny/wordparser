@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TheGuardianAdapter
+public class TheGuardianAdapter implements ArticleManager
 {
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
     private final String apiKey;

@@ -16,7 +16,7 @@ public class Database
     Serializer.serialize(database);
   }
 
-  public static void analize()
+  public static void analyze()
   {
     BasicArticle[] database = Deserializer.deserialize("./assets/articlesDB.json");
     //TreeMap<String, Integer> frequency = Wordparser.wordCount(Wordparser.filterWords(database, "./assets/utilities/english_stoplist_v1.txt"));

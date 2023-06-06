@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NYTimesAdapter
+public class NYTimesAdapter implements ArticleManager
 {
   private final String sourcePath;
   public ArrayList<BasicArticle> articles = new ArrayList<>();
