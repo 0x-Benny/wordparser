@@ -28,6 +28,19 @@ public class BasicArticle
         return body;
     }
 
+    public void setSource(String source)
+    {
+        this.source = source;
+    }
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+    public void setBody(String body)
+    {
+        this.body = body;
+    }
+
     @Override
     public String toString()
     {
