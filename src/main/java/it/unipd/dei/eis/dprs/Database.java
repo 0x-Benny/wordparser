@@ -8,9 +8,9 @@ import org.apache.commons.lang3.ArrayUtils;
 
 public class Database
 {
-  public static void download() //eventualmente String query da dare alle api guardian
+  public static void download(String query)
   {
-    TheGuardianAdapter api = new TheGuardianAdapter("9b04d5bd-ae24-4ed7-8bde-7c57ee902f70");
+    TheGuardianAdapter api = new TheGuardianAdapter("9b04d5bd-ae24-4ed7-8bde-7c57ee902f70", query);
     NYTimesAdapter csv = new NYTimesAdapter("./assets/nytimes/");
     BasicArticle[] database = ArrayUtils.addAll(api.fetchArticles(), csv.fetchArticles());
     Serializer.serialize(database);

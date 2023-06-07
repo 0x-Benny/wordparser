@@ -43,13 +43,13 @@ public class NYTimesAdapter implements ArticleManager
         }
         catch (IOException e)
         {
-          System.err.println("++ERRORE. Lettura del file non riuscita. Dettagli:");
-          e.printStackTrace();
+          System.err.println("++ERROR. Could not read files. More details:");
+          System.err.println(e.getMessage());
         }
       }
     }
     else
-      System.out.println("++ERRORE. Sorgenti NYTimes inesistenti.");
+      System.out.println("++ERROR. Missing NYTimes' sources.");
     // Risultato finale
     return articles.toArray(new BasicArticle[0]);
   }

@@ -15,11 +15,13 @@ public class TheGuardianAdapter implements ArticleManager
 {
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
     private final String apiKey;
+    private final String query;
     public ArrayList<BasicArticle> articles = new ArrayList<>();
 
-    public TheGuardianAdapter(final String apiKey)
+    public TheGuardianAdapter(final String apiKey, final String query)
     {
         this.apiKey = apiKey;
+        this.query = query;
     }
 
     // Metodo ausiliario per formattare e pulire correttamente il testo HTML
@@ -33,17 +35,14 @@ public class TheGuardianAdapter implements ArticleManager
         return null;
     }
 
-    public BasicArticle[]  fetchArticles()
-    {
-        return fetchArticles(null);
-    }
-    public BasicArticle[] fetchArticles(String query)
+    public BasicArticle[] fetchArticles()
     {
         // Costruzione della richiesta con libreria Okhttp
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder queryUrlBuilder = Objects.requireNonNull(HttpUrl.get(TG_API_URL)).newBuilder();
         queryUrlBuilder.addQueryParameter("api-key", apiKey);
         queryUrlBuilder.addQueryParameter("show-fields", "body");
+        queryUrlBuilder.addQueryParameter("page-size", String.valueOf(200));
         if (query != null && !query.isEmpty())
         {
             queryUrlBuilder.addQueryParameter("q", query);
@@ -70,12 +69,12 @@ public class TheGuardianAdapter implements ArticleManager
                 }
             }
             else
-                System.out.println("++ERRORE. Campo \"results\" di TheGuardian nullo o non valido.");
+                System.err.println("++ERROR. TheGuardian's \"results\" field is null or invalid.");
         }
         catch (IOException e)
         {
-            System.err.println("++ERRORE. Nessuna risposta dalle API TheGuardian. Dettagli:");
-            e.printStackTrace();
+            System.err.println("++ERROR. No response from TheGuardian's API. More details:");
+            System.err.println(e.getMessage());
         }
         // Risultato finale
         return articles.toArray(new BasicArticle[0]);

@@ -31,7 +31,7 @@ public class Deserializer
     }
     catch (IOException | NullPointerException e)
     {
-      System.err.println("Errore. Database non trovato. Si prega di effettuare prima il download.");
+      System.err.println("++ERROR. Database not found. Please, run the \"download\" option first.");
     }
     // Risultato finale
     return articles.toArray(new BasicArticle[0]);

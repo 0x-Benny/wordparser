@@ -23,7 +23,7 @@ public class Serializer
     }
     catch (IOException e)
     {
-      System.err.println("++ERRORE. Impossibile creare il database. Dettagli:");
+      System.err.println("++ERROR. Could not create database. More details:");
       e.printStackTrace();
     }
   }
