@@ -25,7 +25,6 @@ public class Deserializer
           String body = article.get("body").asText();
           String source = article.get("source").asText();
           articles.add(new BasicArticle(title, body, source));
-          //System.out.println("**ARTICOLO CREATO**\nTITOLO: " + title + "\nTESTO: " + body + '\n');
         }
       }
     }

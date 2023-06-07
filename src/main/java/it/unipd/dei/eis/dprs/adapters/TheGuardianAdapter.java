@@ -65,13 +65,12 @@ public class TheGuardianAdapter implements ArticleManager
                     String title = resultNode.get("webTitle").asText();
                     String body = bodyFormatter(resultNode.get("fields").get("body").asText());
                     articles.add(new BasicArticle(title, body, "TheGuardian"));
-                    //System.out.println("**ARTICOLO CREATO**\nTITOLO: " + title + "\nTESTO: " + body + '\n');
                 }
             }
             else
                 System.err.println("++ERROR. TheGuardian's \"results\" field is null or invalid.");
         }
-        catch (IOException e)
+        catch (IOException | NullPointerException e)
         {
             System.err.println("++ERROR. No response from TheGuardian's API. More details:");
             System.err.println(e.getMessage());

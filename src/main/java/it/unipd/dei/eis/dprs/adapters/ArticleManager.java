@@ -4,5 +4,5 @@ import it.unipd.dei.eis.dprs.BasicArticle;
 
 public interface ArticleManager
 {
-    public BasicArticle[] fetchArticles();
+    BasicArticle[] fetchArticles();
 }

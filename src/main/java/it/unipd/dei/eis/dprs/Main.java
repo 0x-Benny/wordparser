@@ -42,19 +42,19 @@ public class Main
     if (cmd.hasOption('d'))
     {
       Database.download(cmd.getOptionValue('d'));
-      System.out.println("Successful download.");
+      System.out.println("**SUCCESS. Download completed.");
     }
     else if (cmd.hasOption("de"))
     {
       Database.download(cmd.getOptionValue("de"));
-      System.out.println("Successful download.");
+      System.out.println("**SUCCESS. Download completed.");
       Database.analyze();
-      System.out.println("Extraction result: 123456789");
+      System.out.println("**SUCCESS. Extraction completed.");
     }
     else if (cmd.hasOption('e'))
     {
       Database.analyze();
-      System.out.println("Extraction result: 123456789");
+      System.out.println("**SUCCESS. Extraction completed.");
     }
     else
     {
