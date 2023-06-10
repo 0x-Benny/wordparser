@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class StrategyHelper
 {
-    private static HashSet<String> CreateStopList()
+    private static HashSet<String> createStopList()
     {
         HashSet<String> stoplist = new HashSet<>(); //Creo il set con le parole non volute
         try
@@ -36,7 +36,7 @@ public class StrategyHelper
 
     public static void insertIntoMap(String[] tokens, HashMap<String, Integer> results)
     {
-        HashSet<String> stoplist = StrategyHelper.CreateStopList();
+        HashSet<String> stoplist = StrategyHelper.createStopList();
         for (String word : tokens)
         { //Procedo per l'articolo completo
             if (!stoplist.contains(word))

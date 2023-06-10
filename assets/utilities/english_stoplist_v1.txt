@@ -256,6 +256,7 @@ more
 moreover
 most
 mostly
+mr
 much
 must
 my
