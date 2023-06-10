@@ -25,6 +25,7 @@ public class Serializer
     {
       System.err.println("++ERROR. Could not create database. More details:");
       e.printStackTrace();
+      //throw new RuntimeException();
     }
   }
 }

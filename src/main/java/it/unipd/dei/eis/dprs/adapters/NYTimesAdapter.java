@@ -22,7 +22,7 @@ public class NYTimesAdapter implements SourceAdapter
   public BasicArticle[] fetchArticles()
   {
     File[] files = new File(sourcePath).listFiles();
-    if (files != null)
+    if (files != null && files.length != 0)
     {
       for (File file : files)
       {
@@ -49,7 +49,7 @@ public class NYTimesAdapter implements SourceAdapter
       }
     }
     else
-      System.out.println("++ERROR. Missing NYTimes' sources.");
+      System.err.println("++ERROR. Missing NYTimes' sources.");
     // Risultato finale
     return articles.toArray(new BasicArticle[0]);
   }

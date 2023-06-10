@@ -82,6 +82,10 @@ public class StrategyHelper
     public static void toTXT(HashMap<String, Integer> results) throws IOException
     {
         String result = String.valueOf(results).replaceAll(",","\n").replaceAll("[^a-zA-Z0-9_+=+\\n]","");
+        if (result.equals(""))
+        {
+            System.err.println("++WARNING. Database is empty.");
+        }
         try (Writer out = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(Paths.get("./assets/WordCounter.txt")), StandardCharsets.UTF_8)))
         {
             out.write(result);
