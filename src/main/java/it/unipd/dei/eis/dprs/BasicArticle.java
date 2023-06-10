@@ -5,20 +5,18 @@ public class BasicArticle
     private String title;
     private String body;
     private String source;
+    private String url;
 
     public BasicArticle() {}
 
-    public BasicArticle(final String title, final String body, final String source)
+    public BasicArticle(final String title, final String body, final String source, final String url)
     {
-        this.source = source;
         this.title = title;
         this.body = body;
+        this.source = source;
+        this.url = url;
     }
 
-    public String getSource()
-    {
-        return source;
-    }
     public String getTitle()
     {
         return title;
@@ -27,11 +25,15 @@ public class BasicArticle
     {
         return body;
     }
-
-    public void setSource(String source)
+    public String getSource()
     {
-        this.source = source;
+        return source;
     }
+    public String getUrl()
+    {
+        return url;
+    }
+
     public void setTitle(String title)
     {
         this.title = title;
@@ -40,12 +42,21 @@ public class BasicArticle
     {
         this.body = body;
     }
+    public void setSource(String source)
+    {
+        this.source = source;
+    }
+    public void setUrl(String url)
+    {
+        this.url = url;
+    }
 
     @Override
     public String toString()
     {
         return "[ARTICLE INFO] {\n" +
                 "*SOURCE='" + getSource() + "'\n" +
+                "*URL='" + getUrl() + "'\n" +
                 "*TITLE='" + getTitle() + "'\n" +
                 "*BODY='" + getBody() + "'\n" +
                 '}';

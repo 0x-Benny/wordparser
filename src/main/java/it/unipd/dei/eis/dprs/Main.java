@@ -1,46 +1,22 @@
 package it.unipd.dei.eis.dprs;
 
-/*import org.apache.commons.cli.CommandLine;
+import it.unipd.dei.eis.dprs.startegies.WordCountStrategy;
+import it.unipd.dei.eis.dprs.startegies.TotalOccurencesCountStrategy;
+import it.unipd.dei.eis.dprs.startegies.ArticleOccurencesCountStrategy;
+import java.util.Scanner;
+import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionGroup;
-import org.apache.commons.cli.Options;*/
-
-import edu.stanford.nlp.ling.Word;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import org.apache.commons.cli.Options;
 
 public class Main
 {
-  public static void main(String[] args) throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    Strategy strategy = null;
-    if(strategy == null){
-      System.out.println("Select a count method:" + "\n"
-              + "1-Count in how many articles the words appear" + "\n"
-              + "2-Count how many times words appear");
-      int i = Integer.parseInt(reader.readLine());
-
-      if(i == 1){
-        System.out.println("Scelto word per article\n");
-        strategy = new WordPerArticle();
-      } else{
-        System.out.println("Scelto totalWord\n");
-        strategy = new TotalWord();
-      }
-    }
-    Database database = new Database();
-    database.download("");
-
-    database.analyze(strategy);
-
-
-
-    /*Options options = new Options();
+  public static void main(String[] args)
+  {
+    Options options = new Options();
     OptionGroup actionGroup = new OptionGroup();
 
     actionGroup.addOption(new Option("h", "help", false, "Print this help."));
@@ -76,26 +52,47 @@ public class Main
     {
       Database.download(cmd.getOptionValue("de"));
       System.out.println("**SUCCESS. Download completed.");
-      Database.analyze();
+      Database.analyze(readChoice());
       System.out.println("**SUCCESS. Extraction completed.");
     }
     else if (cmd.hasOption('e'))
     {
-      Database.analyze();
+      Database.analyze(readChoice());
       System.out.println("**SUCCESS. Extraction completed.");
     }
     else
     {
       formatter.printHelp("App -{d,de,e,h} <download-query>", options);
-    }*/
-
-
-
-
-
-
-
-
+    }
   }
 
+  private static WordCountStrategy readChoice()
+  {
+    Scanner scanner = new Scanner(System.in);
+    int choice = 0;
+    do
+    {
+      System.out.println("Select a counting method:" + "\n" +
+                          "1 - Count in how many articles the words appear." + "\n" +
+                          "2 - Count how many times words appear.");
+      String input = scanner.nextLine();
+      try
+      {
+        choice = Integer.parseInt(input);
+      }
+      catch (NumberFormatException e)
+      {
+        System.err.println("++ERROR. Please enter a valid integer.");
+      }
+    } while (choice != 1 && choice != 2);
+
+    if (choice == 1)
+    {
+      return new ArticleOccurencesCountStrategy();
+    }
+    else
+    {
+      return new TotalOccurencesCountStrategy();
+    }
+  }
 }

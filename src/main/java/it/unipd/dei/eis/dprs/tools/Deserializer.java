@@ -24,7 +24,8 @@ public class Deserializer
           String title = article.get("title").asText();
           String body = article.get("body").asText();
           String source = article.get("source").asText();
-          articles.add(new BasicArticle(title, body, source));
+          String url = article.get("url").asText();
+          articles.add(new BasicArticle(title, body, source, url));
         }
       }
     }

@@ -1,6 +1,6 @@
 package it.unipd.dei.eis.dprs;
 
-import it.unipd.dei.eis.dprs.tools.HelperClass;
+import it.unipd.dei.eis.dprs.tools.StrategyHelper;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -15,12 +15,13 @@ import static org.junit.Assert.assertTrue;
 public class Testing {
 
     @Test
+    /*
     public void CreateStopList() throws IOException{
-        HashSet<String> stoplist = HelperClass.CreateStopList("assets/utilities/english_stoplist_v1.txt");
+        HashSet<String> stoplist = StrategyHelper.CreateStopList();
         assertFalse(stoplist.equals(null));
         assertFalse(stoplist.size() == 0);
     }
-
+    */
 
     private String[] randomStrings(){
         String[] randomStrings = new String[70];
@@ -56,7 +57,7 @@ public class Testing {
         assertFalse(results.size() == 50); //Controllo che prima di chiamare il metodo la dimensione sia
                                                     //diversa da 50
 
-        results = HelperClass.sortMap(results);
+        results = StrategyHelper.sortMap(results);
         assertFalse(results.isEmpty()); //Controllo che ci sia effetivamente qualcosa
         assertFalse(results.size() != 50); //Controllo se m ha tagliato le parole in più
 

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NYTimesAdapter implements ArticleManager
+public class NYTimesAdapter implements SourceAdapter
 {
   private final String sourcePath;
   public ArrayList<BasicArticle> articles = new ArrayList<>();
@@ -37,7 +37,7 @@ public class NYTimesAdapter implements ArticleManager
           while (mappingIterator.hasNextValue())
           {
             List<String> article = mappingIterator.nextValue();
-            articles.add(new BasicArticle(article.get(2), article.get(3), "NYTimes"));
+            articles.add(new BasicArticle(article.get(2), article.get(3), "NYTimes", article.get(1)));
             //System.out.println("**ARTICOLO CREATO**\nTITOLO: " + article.get(2) + "\nTESTO: " + article.get(3) + '\n');
           }
         }

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TheGuardianAdapter implements ArticleManager
+public class TheGuardianAdapter implements SourceAdapter
 {
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
     private final String apiKey;
@@ -47,9 +47,9 @@ public class TheGuardianAdapter implements ArticleManager
         {
             queryUrlBuilder.addQueryParameter("q", query);
         }
-        String url = queryUrlBuilder.build().toString();
+        String queryUrl = queryUrlBuilder.build().toString();
         Request request = new Request.Builder()
-                .url(url)
+                .url(queryUrl)
                 .build();
 
         // Costruzione della risposta con libreria Jackson
@@ -64,7 +64,8 @@ public class TheGuardianAdapter implements ArticleManager
                 {
                     String title = resultNode.get("webTitle").asText();
                     String body = bodyFormatter(resultNode.get("fields").get("body").asText());
-                    articles.add(new BasicArticle(title, body, "TheGuardian"));
+                    String url = resultNode.get("webUrl").asText();
+                    articles.add(new BasicArticle(title, body, "TheGuardian", url));
                 }
             }
             else
