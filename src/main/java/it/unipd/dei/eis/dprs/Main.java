@@ -1,18 +1,46 @@
 package it.unipd.dei.eis.dprs;
 
-import org.apache.commons.cli.CommandLine;
+/*import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionGroup;
-import org.apache.commons.cli.Options;
+import org.apache.commons.cli.Options;*/
+
+import edu.stanford.nlp.ling.Word;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main
 {
-  public static void main(String[] args)
-  {
-    Options options = new Options();
+  public static void main(String[] args) throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    Strategy strategy = null;
+    if(strategy == null){
+      System.out.println("Select a count method:" + "\n"
+              + "1-Count in how many articles the words appear" + "\n"
+              + "2-Count how many times words appear");
+      int i = Integer.parseInt(reader.readLine());
+
+      if(i == 1){
+        System.out.println("Scelto word per article\n");
+        strategy = new WordPerArticle();
+      } else{
+        System.out.println("Scelto totalWord\n");
+        strategy = new TotalWord();
+      }
+    }
+    Database database = new Database();
+    database.download("");
+
+    database.analyze(strategy);
+
+
+
+    /*Options options = new Options();
     OptionGroup actionGroup = new OptionGroup();
 
     actionGroup.addOption(new Option("h", "help", false, "Print this help."));
@@ -59,6 +87,15 @@ public class Main
     else
     {
       formatter.printHelp("App -{d,de,e,h} <download-query>", options);
-    }
+    }*/
+
+
+
+
+
+
+
+
   }
+
 }
