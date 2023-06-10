@@ -1,8 +1,8 @@
 package it.unipd.dei.eis.dprs;
 
 import it.unipd.dei.eis.dprs.strategies.WordCountStrategy;
-import it.unipd.dei.eis.dprs.strategies.TotalOccurencesCountStrategy;
-import it.unipd.dei.eis.dprs.strategies.ArticleOccurencesCountStrategy;
+import it.unipd.dei.eis.dprs.strategies.TotalOccurrencesCountStrategy;
+import it.unipd.dei.eis.dprs.strategies.ArticleOccurrencesCountStrategy;
 import java.util.Scanner;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -88,11 +88,11 @@ public class Main
 
     if (choice == 1)
     {
-      return new ArticleOccurencesCountStrategy();
+      return new ArticleOccurrencesCountStrategy();
     }
     else
     {
-      return new TotalOccurencesCountStrategy();
+      return new TotalOccurrencesCountStrategy();
     }
   }
 }

@@ -5,7 +5,7 @@ import it.unipd.dei.eis.dprs.tools.StrategyHelper;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class TotalOccurencesCountStrategy implements WordCountStrategy
+public class TotalOccurrencesCountStrategy implements WordCountStrategy
 {
     public void wordCount (BasicArticle[] basicarticle)
     {
@@ -22,7 +22,7 @@ public class TotalOccurencesCountStrategy implements WordCountStrategy
         }
         try
         {
-            StrategyHelper.toTXT(StrategyHelper.sortMap(results));
+            StrategyHelper.toTextfile(StrategyHelper.sortMap(results));
         }
         catch (IOException e)
         {

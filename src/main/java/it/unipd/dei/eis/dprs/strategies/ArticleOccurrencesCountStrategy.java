@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ArticleOccurencesCountStrategy implements WordCountStrategy
+public class ArticleOccurrencesCountStrategy implements WordCountStrategy
 {
     public void wordCount(BasicArticle[] basicarticle)
     {
@@ -30,7 +30,7 @@ public class ArticleOccurencesCountStrategy implements WordCountStrategy
         }
         try
         {
-            StrategyHelper.toTXT(StrategyHelper.sortMap(results));
+            StrategyHelper.toTextfile(StrategyHelper.sortMap(results));
         }
         catch (IOException e)
         {

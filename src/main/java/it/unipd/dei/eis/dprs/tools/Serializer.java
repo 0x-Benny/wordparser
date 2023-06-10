@@ -10,22 +10,21 @@ import java.io.IOException;
 
 public class Serializer
 {
-  public static void serialize(BasicArticle[] articles)
-  {
-    try
-    {
-      ObjectMapper mapper = new ObjectMapper();
-      mapper.enable(SerializationFeature.INDENT_OUTPUT);
+	public static void serialize(BasicArticle[] articles)
+	{
+		try
+		{
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-      ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+			ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
-      writer.writeValue(new File("./assets/articlesDB.json"), articles);
-    }
-    catch (IOException e)
-    {
-      System.err.println("++ERROR. Could not create database. More details:");
-      e.printStackTrace();
-      //throw new RuntimeException();
-    }
-  }
+			writer.writeValue(new File("./assets/articlesDB.json"), articles);
+		}
+		catch (IOException e)
+		{
+			System.err.println("++ERROR. Could not create database. More details:");
+			e.printStackTrace();
+		}
+	}
 }

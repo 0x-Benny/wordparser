@@ -79,7 +79,7 @@ public class StrategyHelper
         return sortedmap;
     }
 
-    public static void toTXT(HashMap<String, Integer> results) throws IOException
+    public static void toTextfile(HashMap<String, Integer> results) throws IOException // Trasforma in un file .txt la mappa
     {
         String result = String.valueOf(results).replaceAll(",","\n").replaceAll("[^a-zA-Z0-9_+=+\\n]","");
         if (result.equals(""))
