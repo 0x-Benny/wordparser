@@ -1,8 +1,8 @@
 package it.unipd.dei.eis.dprs;
 
-import it.unipd.dei.eis.dprs.startegies.WordCountStrategy;
-import it.unipd.dei.eis.dprs.startegies.TotalOccurencesCountStrategy;
-import it.unipd.dei.eis.dprs.startegies.ArticleOccurencesCountStrategy;
+import it.unipd.dei.eis.dprs.strategies.WordCountStrategy;
+import it.unipd.dei.eis.dprs.strategies.TotalOccurencesCountStrategy;
+import it.unipd.dei.eis.dprs.strategies.ArticleOccurencesCountStrategy;
 import java.util.Scanner;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;

@@ -1,4 +1,4 @@
-package it.unipd.dei.eis.dprs.startegies;
+package it.unipd.dei.eis.dprs.strategies;
 
 import it.unipd.dei.eis.dprs.BasicArticle;
 
