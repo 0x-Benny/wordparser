@@ -1,5 +1,7 @@
 # WORDPARSER
 
+Wordparser is an exam project aimed at parsing and counting words in a collection of articles downloaded from a number of online sources.
+
 ## EIS Class
 
 Final Project - Articles Analyzer
