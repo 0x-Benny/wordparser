@@ -8,8 +8,17 @@ import it.unipd.dei.eis.dprs.BasicArticle;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Contiene un metodo per serializzare gli articoli.
+ * @see com.fasterxml.jackson
+ */
+
 public class Serializer
 {
+	/**
+	 * Serializza gli articoli, ovvero mappa un array di articoli in un file JSON.
+	 * @param articles Array di articoli.
+	 */
 	public static void serialize(BasicArticle[] articles)
 	{
 		try

@@ -5,13 +5,21 @@ import it.unipd.dei.eis.dprs.tools.StrategyHelper;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Classe che realizza l'interfaccia WordCountStrategy in modo che siano enumerate tutte le occorrenze di ogni parola,
+ * comprese eventuali ripetizioni all'interno di uno stesso articolo.
+ */
 public class TotalOccurrencesCountStrategy implements WordCountStrategy
 {
-    public void wordCount (BasicArticle[] basicarticle)
+    /**
+     * Conta tutte le occorrenze di ogni parola, comprendendo eventuali ripetizioni all'interno di uno stesso articolo.
+     * @see it.unipd.dei.eis.dprs.strategies.WordCountStrategy
+     */
+    public void wordCount (BasicArticle[] articles)
     {
         HashMap<String, Integer> results = new HashMap<>(); //Hashmap dei risultati
 
-        for(BasicArticle b: basicarticle)
+        for(BasicArticle b: articles)
         {
             String title = b.getTitle().toLowerCase();
             String body = b.getBody().toLowerCase();

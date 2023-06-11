@@ -1,5 +1,8 @@
 package it.unipd.dei.eis.dprs;
 
+/**
+ * Astrazione semplificativa di un articolo di giornale online.
+ */
 public class BasicArticle
 {
     private String title;

@@ -11,11 +11,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Gestisce l'accesso ad articoli del Guardian.
+ * @see it.unipd.dei.eis.dprs.adapters.SourceAdapter
+ */
 public class TheGuardianAdapter implements SourceAdapter
 {
+    // URL dell'API del Guardian
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
+
+    // Chiave di accesso per l'API del Guardian
     private final String apiKey;
+    // Termine di ricerca per l'API del Guardian
     private final String query;
+    // Collezione di articoli.
     public ArrayList<BasicArticle> articles = new ArrayList<>();
 
     public TheGuardianAdapter(final String apiKey, final String query)
@@ -24,7 +33,12 @@ public class TheGuardianAdapter implements SourceAdapter
         this.query = query;
     }
 
-    // Metodo ausiliario per formattare e pulire correttamente il testo HTML
+    /**
+     * Metodo ausiliario per formattare e pulire correttamente il testo HTML
+     * @param text Testo da formattare.
+     * @return Testo formattato.
+     * @see org.jsoup.Jsoup
+     */
     private String bodyFormatter(String text)
     {
         if(text != null)
@@ -34,7 +48,14 @@ public class TheGuardianAdapter implements SourceAdapter
         }
         return null;
     }
-
+/**
+ * Preleva gli articoli.
+ * @return Array di articoli.
+ * @see okhttp3.HttpUrl
+ * @see okhttp3.OkHttpClient
+ * @see com.fasterxml.jackson.databind.MappingIterator
+ * @see com.fasterxml.jackson.dataformat
+ * */
     public BasicArticle[] fetchArticles()
     {
         // Costruzione della richiesta con libreria Okhttp

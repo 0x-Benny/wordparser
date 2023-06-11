@@ -16,8 +16,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Classe ausiliaria. Contiene metodi per la gestione di una lista di stop words e la creazione
+ * di una mappa di coppie parola-frequenza.
+ */
 public class StrategyHelper
 {
+    /**
+     * Crea una lista di stop words, ovvero di parole da escludere dal computo.
+     * @return Insieme di parole gestito tramite tabella hash.
+     */
     private static HashSet<String> createStopList()
     {
         HashSet<String> stoplist = new HashSet<>(); //Creo il set con le parole non volute
@@ -34,6 +42,11 @@ public class StrategyHelper
         return stoplist;
     }
 
+    /**
+     * Inserisce in una mappa un insieme di parole, ciascuna con la rispettiva frequenza.
+     * @param tokens Insieme di parole da inserire nella mappa.
+     * @param results Mappa di coppie parola-frequenza
+     */
     public static void insertIntoMap(String[] tokens, HashMap<String, Integer> results)
     {
         HashSet<String> stoplist = StrategyHelper.createStopList();
@@ -53,6 +66,11 @@ public class StrategyHelper
         }
     }
 
+    /**
+     * Ordina una mappa di coppie parola-frequenza.
+     * @param results Mappa di coppie parola-frequenza.
+     * @return Mappa di coppie parola-frequenza ordinate in base alla frequenza.
+     */
     public static HashMap<String, Integer> sortMap (HashMap<String, Integer> results)
     {
         ArrayList<Integer> list = new ArrayList<>();
@@ -79,6 +97,11 @@ public class StrategyHelper
         return sortedmap;
     }
 
+    /**
+     * Esporta in un file di testo una mappa di coppie parola-frequenza.
+     * @param results Mappa di coppie parola-frequenza.
+     * @throws IOException Lancia l'eccezione se si verificano errori nell'accesso alla memoria di massa.
+     */
     public static void toTextfile(HashMap<String, Integer> results) throws IOException // Trasforma in un file .txt la mappa
     {
         String result = String.valueOf(results).replaceAll(",","\n").replaceAll("[^a-zA-Z0-9_+=+\\n]","");

@@ -7,8 +7,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Contiene un metodo per deserializzare file JSON.
+ */
 public class Deserializer
 {
+  /**
+   * Deserializza il file JSON, ovvero mappa i campi di ogni articolo nei corrispondenti campi di un oggetto.
+   * @param databasePath Percorso del database (file JSON).
+   * @return Array di articoli.
+   * @see com.fasterxml.jackson
+   */
   public static BasicArticle[] deserialize(String databasePath)
   {
     ArrayList<BasicArticle> articles = new ArrayList<>();

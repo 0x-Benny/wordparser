@@ -12,6 +12,9 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 
+/**
+ * Classe principale del progetto. Contiene l'interfaccia utente.
+ */
 public class Main
 {
   public static void main(String[] args)
@@ -66,6 +69,12 @@ public class Main
     }
   }
 
+  /**
+   * Metodo ausiliario: in base al valore letto tramite lo scanner, conta le occorrenze complessive di ogni parola
+   * oppure il numero di articoli in cui ogni parola compare.
+   * @return Una tecnica di conteggio delle parole da adottare nell'analisi dei termini.
+   * @see it.unipd.dei.eis.dprs.strategies.WordCountStrategy
+   */
   private static WordCountStrategy readChoice()
   {
     Scanner scanner = new Scanner(System.in);

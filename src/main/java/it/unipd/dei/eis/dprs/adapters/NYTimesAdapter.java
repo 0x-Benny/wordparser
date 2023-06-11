@@ -9,9 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestisce l'accesso ad articoli del New York Times.
+ * @see it.unipd.dei.eis.dprs.adapters.SourceAdapter
+ */
 public class NYTimesAdapter implements SourceAdapter
 {
+  // Percorso della sorgente.
   private final String sourcePath;
+  // Collezione di articoli.
   public ArrayList<BasicArticle> articles = new ArrayList<>();
 
   public NYTimesAdapter(final String sourcePath)
@@ -19,6 +25,12 @@ public class NYTimesAdapter implements SourceAdapter
     this.sourcePath = sourcePath;
   }
 
+  /**
+   * Preleva gli articoli.
+   * @return Array di articoli.
+   * @see com.fasterxml.jackson.databind.MappingIterator
+   * @see com.fasterxml.jackson.dataformat
+   */
   public BasicArticle[] fetchArticles()
   {
     File[] files = new File(sourcePath).listFiles();
