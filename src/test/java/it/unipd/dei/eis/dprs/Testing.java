@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 
 public class Testing {
 
-    @Test
     /*
+    @Test
     public void CreateStopList() throws IOException{
         HashSet<String> stoplist = StrategyHelper.CreateStopList();
         assertFalse(stoplist.equals(null));
@@ -24,7 +24,7 @@ public class Testing {
     */
 
     private String[] randomStrings(){
-        String[] randomStrings = new String[70];
+        String[] randomString = new String[70];
         Random random = new Random();
 
         for(int i = 0; i < 50; i++)
@@ -34,9 +34,9 @@ public class Testing {
             {
                 word[j] = (char)('a' + random.nextInt(26));
             }
-            randomStrings[i] = new String(word);
+            randomString[i] = new String(word);
         }
-        return randomStrings;
+        return randomString;
     }
 
     @Test
