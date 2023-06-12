@@ -197,6 +197,4 @@ public class Testing {
         assertFalse("Test failed because wordCounter file doesn't exists or it is empty",
                 !file.exists() || file.length() == 0);
     }
-
-
 }
