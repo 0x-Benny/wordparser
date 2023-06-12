@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -75,31 +76,25 @@ public class StrategyHelper
     /**
      * Ordina una mappa di coppie parola-frequenza.
      * @param results Mappa di coppie parola-frequenza.
-     * @return Mappa di coppie parola-frequenza ordinate in base alla frequenza.
+     * @return Mappa di coppie parola-frequenza ordinate prima in base alla frequenza e poi per ordine alfabetico.
      */
     public static HashMap<String, Integer> sortMap (HashMap<String, Integer> results)
     {
-        ArrayList<Integer> list = new ArrayList<>();
         LinkedHashMap<String, Integer> sortedmap = new LinkedHashMap<>();
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(results.entrySet());
 
-        for (Map.Entry<String, Integer> entry : results.entrySet())
-        {
-            list.add(entry.getValue());
+        list.sort((m1, m2) -> {
+            if (m1.getValue().equals(m2.getValue())) //Controllo se i valori sono uguali
+                return m1.getKey().compareTo(m2.getKey()); //Compare le due chiavi perchè A deve essere
+            else                                           //prima di B
+                return m2.getValue().compareTo(m1.getValue()); //Compare i due valori perchè deve ritornare
+        });
+        List<Map.Entry<String, Integer>> first50element = list.stream().limit(50).collect(Collectors.toList());
+
+        for (Map.Entry<String, Integer> entry : first50element) {
+            sortedmap.put(entry.getKey(), entry.getValue());
         }
 
-        list.sort(Collections.reverseOrder());
-        ArrayList<Integer> first50Elements = (ArrayList<Integer>) list.stream().limit(50).collect(Collectors.toList());
-
-        for (Integer num : first50Elements)
-        {
-            for (Map.Entry<String, Integer> entry : results.entrySet())
-            {
-                if (entry.getValue().equals(num))
-                {
-                    sortedmap.put(entry.getKey(), num);
-                }
-            }
-        }
         return sortedmap;
     }
 
