@@ -53,19 +53,19 @@ public class StrategyHelper
         HashSet<String> stoplist = StrategyHelper.createStopList();
         for (String word : tokens)
         {
-            //Se la parole non è tra quelle brutte
+            // Ogni parola assente dalla lista di stop words,
             if (!stoplist.contains(word))
             {
-                //e la mia hashmap non contiene già la parola
+                // e assente dalla mappa,
                 if (!results.containsKey(word) && word != null)
                 {
-                    //allora la inserisco e le do il valore 1
+                    // viene inserita nella mappa con frequenza 1;
                     results.put(word, 1);
                 }
-                //Altrimenti se la contiene
+                // se la parola è già presente nella mappa
                 else if (results.containsKey(word) && word != null)
                 {
-                    //ne aumento solo il valore
+                    // allora la sua frequenza è incrementata di un'unità
                     results.put(word, results.get(word) + 1);
                 }
             }
@@ -88,9 +88,9 @@ public class StrategyHelper
         }
 
         list.sort(Collections.reverseOrder());
-        ArrayList<Integer> first50element = (ArrayList<Integer>) list.stream().limit(50).collect(Collectors.toList());
+        ArrayList<Integer> first50Elements = (ArrayList<Integer>) list.stream().limit(50).collect(Collectors.toList());
 
-        for (Integer num : first50element)
+        for (Integer num : first50Elements)
         {
             for (Map.Entry<String, Integer> entry : results.entrySet())
             {
