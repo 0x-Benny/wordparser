@@ -94,8 +94,7 @@ public class TheGuardianAdapter implements SourceAdapter
         }
         catch (IOException | NullPointerException e)
         {
-            System.err.println("++ERROR. No response from TheGuardian's API. More details:");
-            System.err.println(e.getMessage());
+            System.err.println("++ERROR. No response from TheGuardian's API. More details: " + e.getMessage());
         }
         // Risultato finale
         return articles.toArray(new BasicArticle[0]);

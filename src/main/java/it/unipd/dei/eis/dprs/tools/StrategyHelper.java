@@ -28,7 +28,8 @@ public class StrategyHelper
      */
     private static HashSet<String> createStopList()
     {
-        HashSet<String> stoplist = new HashSet<>(); //Creo il set con le parole non volute
+        //Set con le parole non volute
+        HashSet<String> stoplist = new HashSet<>();
         try
         {
             List<String> allLines = Files.readAllLines(Paths.get("./assets/utilities/english_stoplist_v1.txt"));
@@ -37,7 +38,7 @@ public class StrategyHelper
         }
         catch(IOException e)
         {
-            System.err.println("++ERROR. Stoplist file not found.");
+            System.err.println("++WARNING. Stoplist file not found. Proceeding without it.");
         }
         return stoplist;
     }
@@ -51,16 +52,21 @@ public class StrategyHelper
     {
         HashSet<String> stoplist = StrategyHelper.createStopList();
         for (String word : tokens)
-        { //Procedo per l'articolo completo
+        {
+            //Se la parole non è tra quelle brutte
             if (!stoplist.contains(word))
-            { //Se la parole non è tra quelle brutte
+            {
+                //e la mia hashmap non contiene già la parola
                 if (!results.containsKey(word) && word != null)
-                { //e la mia hashmap non contiene già la parola
-                    results.put(word, 1); //allora la inserisco e le do il valore 1
+                {
+                    //allora la inserisco e le do il valore 1
+                    results.put(word, 1);
                 }
+                //Altrimenti se la contiene
                 else if (results.containsKey(word) && word != null)
-                { //se la contiene
-                    results.put(word, results.get(word) + 1); //aumento il valore
+                {
+                    //ne aumento solo il valore
+                    results.put(word, results.get(word) + 1);
                 }
             }
         }
@@ -102,14 +108,10 @@ public class StrategyHelper
      * @param results Mappa di coppie parola-frequenza.
      * @throws IOException Lancia l'eccezione se si verificano errori nell'accesso alla memoria di massa.
      */
-    public static void toTextfile(HashMap<String, Integer> results) throws IOException // Trasforma in un file .txt la mappa
+    public static void toTextfile(HashMap<String, Integer> results) throws IOException
     {
         String result = String.valueOf(results).replaceAll(",","\n").replaceAll("[^a-zA-Z0-9_+=+\\n]","");
-        if (result.equals(""))
-        {
-            System.err.println("++WARNING. Database is empty.");
-        }
-        try (Writer out = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(Paths.get("./assets/WordCounter.txt")), StandardCharsets.UTF_8)))
+        try (Writer out = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(Paths.get("./assets/wordCounter.txt")), StandardCharsets.UTF_8)))
         {
             out.write(result);
         }

@@ -35,7 +35,5 @@ public class Database
   {
     BasicArticle[] database = Deserializer.deserialize("./assets/articlesDB.json");
     strategy.wordCount(database);
-    //if (frequency.containsKey(""))
-    //  System.out.println("E' proprio il nulla!");
   }
 }

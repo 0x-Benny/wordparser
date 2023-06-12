@@ -15,25 +15,31 @@ import java.io.IOException;
 
 public class Serializer
 {
-	/**
-	 * Serializza gli articoli, ovvero mappa un array di articoli in un file JSON.
-	 * @param articles Array di articoli.
-	 */
-	public static void serialize(BasicArticle[] articles)
-	{
-		try
-		{
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.enable(SerializationFeature.INDENT_OUTPUT);
+  /**
+   * Serializza gli articoli, ovvero mappa un array di articoli in un file JSON.
+   * @param articles Array di articoli.
+   */
+  public static void serialize(BasicArticle[] articles)
+  {
+    if (articles.length == 0)
+    {
+      System.err.println("++ERROR. Could not create database. All sources are unavailable.");
+      System.exit(1);
+    }
+    try
+    {
+      ObjectMapper mapper = new ObjectMapper();
+      mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
 			ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
-			writer.writeValue(new File("./assets/articlesDB.json"), articles);
-		}
-		catch (IOException e)
-		{
-			System.err.println("++ERROR. Could not create database. More details:");
-			e.printStackTrace();
-		}
-	}
+      writer.writeValue(new File("./assets/articlesDB.json"), articles);
+    }
+    catch (IOException e)
+    {
+      System.err.print("++ERROR. Could not create database. More details: ");
+      e.printStackTrace();
+      System.exit(1);
+    }
+  }
 }

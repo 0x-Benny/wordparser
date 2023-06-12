@@ -34,9 +34,8 @@ public class TotalOccurrencesCountStrategy implements WordCountStrategy
         }
         catch (IOException e)
         {
-            System.err.println("++ERROR. Could not create output file. Details:");
-            System.err.println(e.getMessage());
-            //throw new RuntimeException(e); gestione delle eccezioni????????????????
+            System.err.println("++ERROR. Could not create output file. Details: " + e.getMessage());
+            System.exit(1);
         }
     }
 }

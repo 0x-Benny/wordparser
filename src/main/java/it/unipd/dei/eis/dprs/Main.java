@@ -30,7 +30,6 @@ public class Main
 
     options.addOptionGroup(actionGroup);
 
-    // parse
     HelpFormatter formatter = new HelpFormatter();
     CommandLineParser parser = new DefaultParser();
     CommandLine cmd;
@@ -40,8 +39,7 @@ public class Main
     }
     catch (org.apache.commons.cli.ParseException e)
     {
-      System.err.println("++ERROR - Could not parse command line. More details:");
-      System.err.println(e.getMessage());
+      System.err.println("++ERROR - Could not parse command line. More details: " + e.getMessage());
       formatter.printHelp("App -{d,de,e,h} <download-query>", options);
       return;
     }
@@ -49,19 +47,19 @@ public class Main
     if (cmd.hasOption('d'))
     {
       Database.download(cmd.getOptionValue('d'));
-      System.out.println("**SUCCESS. Download completed.");
+      System.out.println("**SUCCESS. Download completed. Path: ./assets/articlesDB.json");
     }
     else if (cmd.hasOption("de"))
     {
       Database.download(cmd.getOptionValue("de"));
-      System.out.println("**SUCCESS. Download completed.");
+      System.out.println("**SUCCESS. Download completed. Path: ./assets/articlesDB.json");
       Database.analyze(readChoice());
-      System.out.println("**SUCCESS. Extraction completed.");
+      System.out.println("**SUCCESS. Extraction completed. Path: ./assets/wordCounter.txt");
     }
     else if (cmd.hasOption('e'))
     {
       Database.analyze(readChoice());
-      System.out.println("**SUCCESS. Extraction completed.");
+      System.out.println("**SUCCESS. Extraction completed. Path: ./assets/wordCounter.txt");
     }
     else
     {

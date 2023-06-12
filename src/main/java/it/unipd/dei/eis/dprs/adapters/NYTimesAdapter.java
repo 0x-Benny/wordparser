@@ -50,13 +50,11 @@ public class NYTimesAdapter implements SourceAdapter
           {
             List<String> article = mappingIterator.nextValue();
             articles.add(new BasicArticle(article.get(2), article.get(3), "NYTimes", article.get(1)));
-            //System.out.println("**ARTICOLO CREATO**\nTITOLO: " + article.get(2) + "\nTESTO: " + article.get(3) + '\n');
           }
         }
         catch (IOException e)
         {
-          System.err.println("++ERROR. Could not read files. More details:");
-          System.err.println(e.getMessage());
+          System.err.println("++ERROR. Could not read files. More details: " + e.getMessage());
         }
       }
     }
