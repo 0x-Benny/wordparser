@@ -3,6 +3,8 @@ package it.unipd.dei.eis.dprs.adapters;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import it.unipd.dei.eis.dprs.BasicArticle;
+import java.io.InputStream;
+import java.util.Properties;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -19,27 +21,49 @@ public class TheGuardianAdapter implements SourceAdapter
 {
     // URL dell'API del Guardian
     private final static String TG_API_URL = "http://content.guardianapis.com/search";
-
     // Chiave di accesso per l'API del Guardian
     private final String apiKey;
     // Termine di ricerca per l'API del Guardian
     private final String query;
-    // Collezione di articoli.
+    // Collezione di articoli
     public ArrayList<BasicArticle> articles = new ArrayList<>();
 
-    public TheGuardianAdapter(final String apiKey, final String query)
+    public TheGuardianAdapter(final String query)
     {
-        this.apiKey = apiKey;
+        this.apiKey = keyLoader();
         this.query = query;
     }
 
     /**
-     * Metodo ausiliario per formattare e pulire correttamente il testo HTML
+     * Metodo statico ausiliario per prelevare la chiave privata di TheGuardianAPI dal file properties.
+     * @return La chiave API.
+     * @see java.util.Properties
+     */
+    private static String keyLoader()
+    {
+        Properties properties = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream input = loader.getResourceAsStream("guardian.properties");
+
+        try
+        {
+            properties.load(input);
+        }
+        catch (IOException | IllegalArgumentException e)
+        {
+            System.err.println("++ERROR. Invalid input in properties file.");
+            throw new RuntimeException(e);
+        }
+        return properties.getProperty("api-key");
+    }
+
+    /**
+     * Metodo statico ausiliario per formattare e pulire correttamente il testo HTML.
      * @param text Testo da formattare.
      * @return Testo formattato.
      * @see org.jsoup.Jsoup
      */
-    private String bodyFormatter(String text)
+    private static String bodyFormatter(String text)
     {
         if(text != null)
         {
@@ -48,18 +72,14 @@ public class TheGuardianAdapter implements SourceAdapter
         }
         return null;
     }
-/**
- * Preleva gli articoli.
- * @return Array di articoli.
- * @see okhttp3.HttpUrl
- * @see okhttp3.OkHttpClient
- * @see com.fasterxml.jackson.databind.MappingIterator
- * @see com.fasterxml.jackson.dataformat
- * */
-    public BasicArticle[] fetchArticles()
+
+    /**
+     * Metodo ausiliario per costruire la richiesta alle API di TheGuardian.
+     * @return Richiesta da inviare.
+     * @see okhttp3.HttpUrl
+     */
+    private Request requestBuilder()
     {
-        // Costruzione della richiesta con libreria Okhttp
-        OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder queryUrlBuilder = Objects.requireNonNull(HttpUrl.get(TG_API_URL)).newBuilder();
         queryUrlBuilder.addQueryParameter("api-key", apiKey);
         queryUrlBuilder.addQueryParameter("show-fields", "body");
@@ -69,15 +89,25 @@ public class TheGuardianAdapter implements SourceAdapter
             queryUrlBuilder.addQueryParameter("q", query);
         }
         String queryUrl = queryUrlBuilder.build().toString();
-        Request request = new Request.Builder()
-                .url(queryUrl)
-                .build();
+        return new Request.Builder()
+            .url(queryUrl)
+            .build();
+    }
 
-        // Costruzione della risposta con libreria Jackson
+    /**
+     * Costruisce una richiesta con Okhttp e preleva gli articoli ricevuti in formato JSON.
+     * @return Array di articoli.
+     * @see okhttp3.OkHttpClient
+     * @see com.fasterxml.jackson.databind.MappingIterator
+     * @see com.fasterxml.jackson.dataformat
+     */
+    public BasicArticle[] fetchArticles()
+    {
+        OkHttpClient client = new OkHttpClient();
         ObjectMapper objectMapper = new ObjectMapper();
         try
         {
-            JsonNode requestRoot = objectMapper.readTree(Objects.requireNonNull(client.newCall(request).execute().body()).string());
+            JsonNode requestRoot = objectMapper.readTree(Objects.requireNonNull(client.newCall(requestBuilder()).execute().body()).string());
             JsonNode results = requestRoot.get("response").get("results");
             if (results != null && results.isArray())
             {

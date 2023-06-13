@@ -46,6 +46,8 @@ public class NYTimesAdapter implements SourceAdapter
               .readerForListOf(String.class)
               .with(CsvParser.Feature.WRAP_AS_ARRAY)
               .readValues(file);
+          // Removes the header
+          mappingIterator.next();
           while (mappingIterator.hasNextValue())
           {
             List<String> article = mappingIterator.nextValue();
