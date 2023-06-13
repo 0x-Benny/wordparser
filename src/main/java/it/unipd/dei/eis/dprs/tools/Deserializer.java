@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public class Deserializer
 {
   /**
-   * Deserializza il file JSON, ovvero mappa gli attributi JSON di ogni articolo nei corrispondenti campi di un oggetto.
+   * Deserializza il file JSON, ovvero mappa gli attributi JSON di ogni articolo nei corrispondenti campi di un oggetto
+   * di tipo BasicArticle.
    * @param databasePath Percorso del database (file JSON).
    * @return Array di articoli.
    * @see com.fasterxml.jackson

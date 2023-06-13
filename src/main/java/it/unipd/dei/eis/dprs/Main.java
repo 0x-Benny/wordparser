@@ -13,7 +13,7 @@ import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 
 /**
- * Classe principale del progetto. Contiene l'interfaccia utente.
+ * Classe eseguibile del progetto.
  */
 public class Main
 {
