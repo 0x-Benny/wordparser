@@ -23,7 +23,7 @@ Si precisa però che viene utilizzata una chiave di test momentanea per comunica
 È necessario quindi registrare una key all'indirizzo https://open-platform.theguardian.com/access/.
 
 Inserire la chiave nel ```guardian.properties``` il cui path è:
-```./src/main/resources/guardian.properties```
+[./src/main/resources/guardian.properties](./src/main/resources/guardian.properties)
 
 Seguono le istruzioni per compilare ed eseguire ex-novo.
 
