@@ -16,7 +16,8 @@ vengono processati dagli ```Adapter``` e vengono trasformati dal formato origina
 Una volta ottenuto l'array di ```BasicArticle``` ci si serve di alcune classi "tool" (```Serializer``` e ```Deserializer```) 
 per costruire il Database e analizzare le parole grazie agli ```WordCountStrategy```.
 
-Il **manuale completo** e i **diagrammi UML dei modelli** rappresentativi del progretto si possono trovare al seguente [link](./docs).
+- Il **manuale completo** e i **diagrammi UML dei modelli** rappresentativi del progretto si possono trovare al seguente [link](./docs).
+- I dettagli sui **test** con le relative informazioni sullo stato si possono trovare al seguente [link](./site/surefire-report.html).
 
 ## Istruzioni per installare ed eseguire
 
@@ -35,8 +36,8 @@ Per compilare il progetto e generare il file .jar:
 mvn package
 ```
 
-Spostare dunque nella directory principale il jar, necessario per avere il corretto accesso alla cartella assets
-contenente sorgenti e stoplist, che possono così essere aggiornati agevolmente:
+Spostare dunque nella directory principale il jar, necessario per avere il corretto accesso alla cartella *assets*
+contenente sorgenti e *stoplist*, che possono così essere aggiornati agevolmente:
 
 ```
 mv ./target/wordparser-1.0-jar-with-dependencies.jar ./
@@ -66,7 +67,8 @@ mvn site
 ## Indicazioni sulle librerie
 
 Per i dettagli esaustivi sulla [scelta delle librerie](./site/dependencies.html) e il loro [utilizzo all'interno
-delle classi](./site/apidocs/index.html) si rimanda alla documentazione ufficiale prodotta con **JavaDoc**.
+delle classi](./site/apidocs/index.html) si rimanda alla documentazione ufficiale prodotta con **Javadoc**,
+accessibili cliccando sui relativi link o accedendo al sito dall'[index.html](./site/index.html).
 
 Come si evince dal [POM](./pom.xml) sono state usate:
 
