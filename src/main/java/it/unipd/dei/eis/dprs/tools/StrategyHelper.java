@@ -87,12 +87,16 @@ public class StrategyHelper
             else                                           //prima di B
                 return m2.getValue().compareTo(m1.getValue()); //Compare i due valori perchè deve ritornare
         });
-        List<Map.Entry<String, Integer>> first50element = list.stream().limit(50).collect(Collectors.toList());
+        List<Map.Entry<String, Integer>> first50element;
+
+        if(list.size() > 50)
+            first50element = list.stream().limit(50).collect(Collectors.toList());
+
+        else first50element = list;
 
         for (Map.Entry<String, Integer> entry : first50element) {
             sortedmap.put(entry.getKey(), entry.getValue());
         }
-
         return sortedmap;
     }
 
