@@ -13,8 +13,7 @@ import org.apache.commons.lang3.ArrayUtils;
 public class Database
 {
   /**
-   * Scarica gli articoli da una sorgente (per semplicità, nella presente implementazione da entrambe le sorgenti
-   * di riferimento) e li memorizza in un file JSON.
+   * Scarica gli articoli da tutte le sorgenti implementate e li memorizza in un file JSON.
    * @param query Termine di ricerca.
    * @see Serializer
    */

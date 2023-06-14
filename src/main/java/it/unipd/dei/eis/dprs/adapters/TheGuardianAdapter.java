@@ -120,11 +120,12 @@ public class TheGuardianAdapter implements SourceAdapter
                 }
             }
             else
-                System.err.println("++ERROR. TheGuardian's \"results\" field is null, empty or invalid.");
+                System.err.println("++WARNING. TheGuardian's \"results\" field is null, empty or invalid. Continuing...");
         }
         catch (IOException | NullPointerException e)
         {
-            System.err.println("++ERROR. No response from TheGuardian's API. More details: " + e.getMessage());
+            System.err.println("++WARNING. No response from TheGuardian's API. More details: " + e.getMessage());
+            System.err.println("Continuing...");
         }
         // Risultato finale
         return articles.toArray(new BasicArticle[0]);

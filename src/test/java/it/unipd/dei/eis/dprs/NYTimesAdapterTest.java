@@ -70,7 +70,7 @@ public class NYTimesAdapterTest
     NYTimesAdapter nyTimesAdapter = new NYTimesAdapter("invalidPath");
     BasicArticle[] articles = nyTimesAdapter.fetchArticles();
 
-    assertEquals("++ERROR. Missing NYTimes' sources." + System.lineSeparator(), err.toString());
+    assertEquals("++WARNING. Missing NYTimes' sources. Continuing..." + System.lineSeparator(), err.toString());
     assertEquals(0, articles.length);
   }
 }

@@ -56,12 +56,13 @@ public class NYTimesAdapter implements SourceAdapter
         }
         catch (IOException e)
         {
-          System.err.println("++ERROR. Could not read files. More details: " + e.getMessage());
+          System.err.println("++WARNING. Could not read NYTimes' sources. More details: " + e.getMessage());
+          System.err.println("Continuing...");
         }
       }
     }
     else
-      System.err.println("++ERROR. Missing NYTimes' sources.");
+      System.err.println("++WARNING. Missing NYTimes' sources. Continuing...");
     // Risultato finale
     return articles.toArray(new BasicArticle[0]);
   }

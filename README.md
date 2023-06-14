@@ -16,10 +16,12 @@ vengono processati dagli ```Adapter``` e vengono trasformati dal formato origina
 Una volta ottenuto l'array di ```BasicArticle``` ci si serve di alcune classi "tool" (```Serializer``` e ```Deserializer```) 
 per costruire il Database e analizzare le parole grazie agli ```WordCountStrategy```.
 
+Il **manuale completo** e i **diagrammi UML dei modelli** rappresentativi del progretto si possono trovare al seguente [link](./docs).
+
 ## Istruzioni per installare ed eseguire
 
 Il progetto consegnato su moodle è pronto per essere analizzato ed eseguito subito.
-Si precisa però che viene utilizzata una chiave di test momentanea per comunicare con le API di TheGuardian.
+Si precisa però che viene utilizzata una **chiave di test momentanea** per comunicare con le API di TheGuardian.
 È necessario quindi registrare una key all'indirizzo https://open-platform.theguardian.com/access/.
 
 Inserire la chiave nel ```guardian.properties``` il cui path è:
@@ -55,7 +57,7 @@ Le opzioni disponibili sono:
 -h,--help                          Print the help.
 ```
 
-Per generare il site del progetto:
+Per generare il sito del progetto:
 
 ```
 mvn site
@@ -64,7 +66,7 @@ mvn site
 ## Indicazioni sulle librerie
 
 Per i dettagli esaustivi sulla [scelta delle librerie](./site/dependencies.html) e il loro [utilizzo all'interno
-delle classi](./site/apidocs/index.html) si rimanda alla documentazione ufficiale prodotta con JavaDoc.
+delle classi](./site/apidocs/index.html) si rimanda alla documentazione ufficiale prodotta con **JavaDoc**.
 
 Come si evince dal [POM](./pom.xml) sono state usate:
 
