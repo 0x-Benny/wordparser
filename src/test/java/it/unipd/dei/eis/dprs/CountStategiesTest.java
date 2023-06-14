@@ -1,14 +1,12 @@
 package it.unipd.dei.eis.dprs;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import it.unipd.dei.eis.dprs.strategies.ArticleOccurrencesCountStrategy;
 import it.unipd.dei.eis.dprs.strategies.TotalOccurrencesCountStrategy;
 import it.unipd.dei.eis.dprs.strategies.WordCountStrategy;
 import it.unipd.dei.eis.dprs.tools.Serializer;
 import it.unipd.dei.eis.dprs.tools.StrategyHelper;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
