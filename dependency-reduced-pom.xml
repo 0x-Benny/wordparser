@@ -4,6 +4,10 @@
   <groupId>it.unipd.dei.eis.dprs</groupId>
   <artifactId>wordparser</artifactId>
   <version>1.0</version>
+  <description>Progettare ed implementare un sistema software in grado di scaricare (download) articoli
+    da testate giornalistiche online resi disponibili da diverse sorgenti e di estrarre e visualizzare
+    i termini più “importanti” nell’insieme degli articoli scaricati.</description>
+  <url>https://github.com/0x-Benny/wordparser</url>
   <build>
     <pluginManagement>
       <plugins>

@@ -10,6 +10,11 @@
   <version>1.0</version>
   <packaging>jar</packaging>
 
+  <description>Progettare ed implementare un sistema software in grado di scaricare (download) articoli
+    da testate giornalistiche online resi disponibili da diverse sorgenti e di estrarre e visualizzare
+    i termini più “importanti” nell’insieme degli articoli scaricati.</description>
+  <url>https://github.com/0x-Benny/wordparser</url>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
