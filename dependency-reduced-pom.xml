@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>it.unipd.dei.eis.dprs</groupId>
   <artifactId>wordparser</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <build>
     <pluginManagement>
       <plugins>
@@ -106,6 +106,12 @@
     </plugins>
   </build>
   <dependencies>
+    <dependency>
+      <groupId>com.github.stefanbirkner</groupId>
+      <artifactId>system-lambda</artifactId>
+      <version>1.2.1</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
