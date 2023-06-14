@@ -34,7 +34,7 @@ public class SerializerDeserializerTest
     BasicArticle[] articles = new BasicArticle[0];
     int status = SystemLambda.catchSystemExit(() -> Serializer.serialize(articles));
 
-    assertEquals("++ERROR. Could not create database. All sources are unavailable.\n", err.toString());
+    assertEquals("++ERROR. Could not create database. All sources are unavailable.\r\n", err.toString());
     assertEquals(1, status);
   }
 
@@ -53,7 +53,7 @@ public class SerializerDeserializerTest
     System.setErr(new PrintStream(err));
     int status = SystemLambda.catchSystemExit(() -> Deserializer.deserialize(databasePath));
 
-    assertEquals("++ERROR. Database not found. Please, run the \"download\" option first.\n", err.toString());
+    assertEquals("++ERROR. Database not found. Please, run the \"download\" option first.\r\n", err.toString());
     assertEquals(1, status);
   }
 

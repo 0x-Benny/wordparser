@@ -8,6 +8,7 @@ import it.unipd.dei.eis.dprs.strategies.TotalOccurrencesCountStrategy;
 import it.unipd.dei.eis.dprs.strategies.WordCountStrategy;
 import it.unipd.dei.eis.dprs.tools.Serializer;
 import it.unipd.dei.eis.dprs.tools.StrategyHelper;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -109,6 +110,7 @@ public class CountStategiesTest
       count++;
     } while (count < 5);
 
+    in.close();
     return tokens;
   }
 
@@ -127,6 +129,7 @@ public class CountStategiesTest
     {
       list.add(stopwords);
     }
+    in.close();
     return list;
   }
 
@@ -262,6 +265,8 @@ public class CountStategiesTest
     assertFalse(value[0] != 1 || value[1] != 1,
         "Test failed, wrong counting for ArticleOccurrencesCountStrategy()");
 
+    in.close();
+
     in = new BufferedReader(new FileReader("assets/wordCounter.txt"));
     strategy = new TotalOccurrencesCountStrategy();
     Database.analyze(strategy);
@@ -275,5 +280,7 @@ public class CountStategiesTest
     }
     assertFalse(value[0] != 2 || value[1] != 2,
         "Test failed, wrong counting for TotalOccurencesContStrategy()");
+
+    in.close();
   }
 }
