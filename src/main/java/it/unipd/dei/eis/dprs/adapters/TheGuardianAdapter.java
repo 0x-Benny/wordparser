@@ -109,7 +109,7 @@ public class TheGuardianAdapter implements SourceAdapter
         {
             JsonNode requestRoot = objectMapper.readTree(Objects.requireNonNull(client.newCall(requestBuilder()).execute().body()).string());
             JsonNode results = requestRoot.get("response").get("results");
-            if (results != null && results.isArray())
+            if (results != null && results.isArray() && !results.isEmpty())
             {
                 for (JsonNode resultNode : results)
                 {
@@ -120,7 +120,7 @@ public class TheGuardianAdapter implements SourceAdapter
                 }
             }
             else
-                System.err.println("++ERROR. TheGuardian's \"results\" field is null or invalid.");
+                System.err.println("++ERROR. TheGuardian's \"results\" field is null, empty or invalid.");
         }
         catch (IOException | NullPointerException e)
         {
