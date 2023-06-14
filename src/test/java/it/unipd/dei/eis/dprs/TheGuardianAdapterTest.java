@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * TheGuardianAdapterTest è una JUnit test class che verifica tutte le fnzionalità della classe {@link TheGuardianAdapter}.
+ * TheGuardianAdapterTest è una JUnit test class che verifica tutte le funzionalità della classe {@link TheGuardianAdapter}.
  */
 class TheGuardianAdapterTest
 {

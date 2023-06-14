@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * NYTimesAdapterTest è una JUnit test class che verifica tutte le fnzionalità della classe {@link NYTimesAdapter}.
+ * NYTimesAdapterTest è una JUnit test class che verifica tutte le funzionalità della classe {@link NYTimesAdapter}.
  */
 public class NYTimesAdapterTest
 {
