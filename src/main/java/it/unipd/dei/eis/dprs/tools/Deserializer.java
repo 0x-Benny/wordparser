@@ -17,7 +17,8 @@ public class Deserializer
    * di tipo BasicArticle.
    * @param databasePath Percorso del database (file JSON).
    * @return Array di articoli.
-   * @see com.fasterxml.jackson
+   * @see com.fasterxml.jackson.databind.JsonNode
+   * @see com.fasterxml.jackson.databind.ObjectMapper
    */
   public static BasicArticle[] deserialize(String databasePath)
   {

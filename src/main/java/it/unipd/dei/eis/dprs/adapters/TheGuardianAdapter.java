@@ -98,8 +98,8 @@ public class TheGuardianAdapter implements SourceAdapter
      * Costruisce una richiesta con Okhttp e preleva gli articoli ricevuti in formato JSON.
      * @return Array di articoli.
      * @see okhttp3.OkHttpClient
-     * @see com.fasterxml.jackson.databind.MappingIterator
-     * @see com.fasterxml.jackson.dataformat
+     * @see com.fasterxml.jackson.databind.ObjectMapper
+     * @see com.fasterxml.jackson.databind.JsonNode
      */
     public BasicArticle[] fetchArticles()
     {

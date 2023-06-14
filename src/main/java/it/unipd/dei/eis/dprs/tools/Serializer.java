@@ -10,7 +10,6 @@ import java.io.IOException;
 
 /**
  * Contiene un metodo per serializzare gli articoli.
- * @see com.fasterxml.jackson
  */
 
 public class Serializer
@@ -18,6 +17,10 @@ public class Serializer
   /**
    * Serializza gli articoli, ovvero mappa un array di articoli in un file JSON.
    * @param articles Array di articoli.
+   * @see com.fasterxml.jackson.core.util.DefaultPrettyPrinter
+   * @see com.fasterxml.jackson.databind.ObjectMapper
+   * @see com.fasterxml.jackson.databind.ObjectWriter
+   * @see com.fasterxml.jackson.databind.SerializationFeature
    */
   public static void serialize(BasicArticle[] articles)
   {

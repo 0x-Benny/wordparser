@@ -29,7 +29,7 @@ public class NYTimesAdapter implements SourceAdapter
    * Preleva gli articoli.
    * @return Array di articoli.
    * @see com.fasterxml.jackson.databind.MappingIterator
-   * @see com.fasterxml.jackson.dataformat
+   * @see com.fasterxml.jackson.dataformat.csv.CsvMapper
    */
   public BasicArticle[] fetchArticles()
   {
