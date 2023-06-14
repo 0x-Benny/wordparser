@@ -69,7 +69,7 @@ delle classi](./site/apidocs/index.html) si rimanda alla documentazione ufficial
 Come si evince dal [POM](./pom.xml) sono state usate:
 
 - ```commons-cli | v1.5.0``` per la gestione delle opzioni della command line;
-- ```com.fasterxml.jackson.core | v2.15.1``` per la serializzazione e lettura di JSON, CSV e produzione del Database;
+- ```com.fasterxml.jackson.core | v2.15.1``` per la serializzazione e lettura di JSON e CSV;
 - ```com.squareup.okhttp3 | v4.11.0``` per la gestione delle chiamate alle web API;
 - ```org.jsoup | v1.16.1``` per sanitizzare e ripulire il codice HTML;
 - ```org.apache.commons | v3.12.0``` per avvalersi del suo comodo ArrayUtils.addAll();
